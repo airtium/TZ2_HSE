@@ -209,3 +209,37 @@ public class TimeTest
     }
 }
 ```
+## Реализуйте любой другой тест на ваше усмотрение
+Реализован тест для Untitled.txt на проверку корректности нахождения целой части среднего значения чисел файла. Код для данного теста указана в CountTest.java
+``` java
+import java.util.*;
+
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+import java.io.*;
+
+import static org.junit.Assert.assertEquals;
+
+public class CountTest
+{
+    @Test
+    public void testAverage() throws FileNotFoundException
+    {
+        File file = new File("/Users/airtium/IdeaProjects/hse_java/src/Untitled.txt");
+        List<Integer> array = new ArrayList<>();
+
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNextInt()) {
+            int number = scanner.nextInt();
+            array.add(number);
+        }
+        TestLib testLib = new TestLib();
+        int average = testLib._sum(array) / array.size();
+        assertEquals(2, average);
+    }
+}
+```
+## Постройте график зависимости времени выполнения от кол-ва чисел в файле (вы можете измерять время выполнения любой функции из реализованных на ваш выбор)
+В данном пункте представлен график зависимости выполнения функции _sum в зависимости от количества чисел в файле:
